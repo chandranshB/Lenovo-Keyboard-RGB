@@ -130,11 +130,10 @@ impl SavedItems {
                 self.show_header(ctx, ui, current_profile, loaded_effect);
             });
 
-            Frame {
-                corner_radius: CornerRadius::same(6),
-                fill: Color32::from_gray(20),
-                ..Frame::default()
-            }
+            Frame::default()
+                .corner_radius(eframe::egui::CornerRadius::same(12))
+                .fill(ui.style().visuals.window_fill)
+                .inner_margin(eframe::egui::Margin::same(12.0))
             .show(ui, |ui| {
                 ui.set_height(ui.available_height());
 

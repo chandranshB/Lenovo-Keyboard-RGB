@@ -242,7 +242,7 @@ impl eframe::App for App {
         });
 
         CentralPanel::default()
-            .frame(Frame::new().inner_margin(self.theme.spacing.large).fill(Color32::from_gray(26)))
+            .frame(Frame::default().inner_margin(self.theme.spacing.large).fill(self.theme.visuals.panel_fill))
             .show(ctx, |ui| {
                 ui.style_mut().spacing.item_spacing = Vec2::splat(self.theme.spacing.large);
                 self.show_ui_elements(ctx, ui);
@@ -358,11 +358,10 @@ impl App {
                     self.state_changed = true;
                 }
 
-                Frame {
-                    corner_radius: CornerRadius::same(6),
-                    fill: Color32::from_gray(20),
-                    ..Frame::default()
-                }
+                Frame::default()
+                    .corner_radius(CornerRadius::same(12))
+                    .fill(ui.style().visuals.window_fill)
+                    .inner_margin(eframe::egui::Margin::same(12.0))
                 .show(ui, |ui| {
                     ui.style_mut().spacing.item_spacing = self.theme.spacing.default;
                     ScrollArea::vertical().show(ui, |ui| {

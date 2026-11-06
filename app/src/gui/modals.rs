@@ -49,7 +49,7 @@ pub fn manager_error(ctx: &Context) -> bool {
                 if !list.is_empty() {
                     modal.body(ui, "A list of possible keyboards was found, please attach it when making an issue:");
                 }
-                Frame::new().fill(Color32::from_gray(20)).inner_margin(5.0).corner_radius(6.0).show(ui, |ui| {
+                Frame::default().fill(ui.style().visuals.window_fill).inner_margin(8.0).corner_radius(8.0).show(ui, |ui| {
                     ScrollArea::vertical().show(ui, |ui| {
                         if list.is_empty() {
                             ui.label("No candidates found");
